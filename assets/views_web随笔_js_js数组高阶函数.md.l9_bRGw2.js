@@ -1,0 +1,23 @@
+import{_ as s,c as n,a2 as e,o as p}from"./chunks/framework.CjNeJe2C.js";const h=JSON.parse('{"title":"js数组的高阶函数","description":"","frontmatter":{"title":"js数组的高阶函数","date":"2020-05-27T00:00:00.000Z","tags":["js","array"],"categories":["js"],"author":["游城走不动"]},"headers":[],"relativePath":"views/web随笔/js/js数组高阶函数.md","filePath":"views/web随笔/js/js数组高阶函数.md"}'),l={name:"views/web随笔/js/js数组高阶函数.md"};function i(t,a,r,c,o,d){return p(),n("div",null,a[0]||(a[0]=[e(`<h2 id="_1-什么是高阶函数" tabindex="-1">1.什么是高阶函数 <a class="header-anchor" href="#_1-什么是高阶函数" aria-label="Permalink to &quot;1.什么是高阶函数&quot;">​</a></h2><p>JavaScript的函数其实都指向某个变量。既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p><h2 id="_2-数组中的高阶函数" tabindex="-1">2.数组中的高阶函数 <a class="header-anchor" href="#_2-数组中的高阶函数" aria-label="Permalink to &quot;2.数组中的高阶函数&quot;">​</a></h2><h3 id="_1-map" tabindex="-1">1.map <a class="header-anchor" href="#_1-map" aria-label="Permalink to &quot;1.map&quot;">​</a></h3><ul><li><p>参数:接受两个参数，一个是回调函数，一个是回调函数的this值(可选)。 其中，回调函数被默认传入三个值，依次为当前元素、当前索引、整个数组。</p></li><li><p>返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值,对原数组没有影响</p></li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>let nums = [1, 2, 3];</span></span>
+<span class="line"><span>let obj = {val: 4};</span></span>
+<span class="line"><span>let newNums = nums.map(function(item,index,array) {</span></span>
+<span class="line"><span>  return item + index + array[index] + this.val; </span></span>
+<span class="line"><span>  //对第一个元素，1 + 0 + 1 + 4 = 6</span></span>
+<span class="line"><span>  //对第二个元素，2 + 1 + 2 + 4 = 9</span></span>
+<span class="line"><span>  //对第三个元素，3 + 2 + 3 + 4 = 12</span></span>
+<span class="line"><span>}, obj);</span></span>
+<span class="line"><span>console.log(newNums);//[6, 9, 12]</span></span></code></pre></div><h3 id="_2-reduce" tabindex="-1">2. reduce <a class="header-anchor" href="#_2-reduce" aria-label="Permalink to &quot;2. reduce&quot;">​</a></h3><ul><li>参数: 接收两个参数，一个为回调函数，另一个为初始值。回调函数中三个默认参数，依次为积累值、当前值、整个数组。</li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>let nums = [1, 2, 3];</span></span>
+<span class="line"><span>// 多个数的加和</span></span>
+<span class="line"><span>let newNums = nums.reduce(function(preSum,curVal,array) {</span></span>
+<span class="line"><span>  return preSum + curVal; </span></span>
+<span class="line"><span>}, 0);</span></span>
+<span class="line"><span>console.log(newNums);//6</span></span></code></pre></div><p>不传默认值会自动以第一个元素为初始值，然后从第二个元素开始依次累计。</p><h3 id="_3-filter" tabindex="-1">3.filter <a class="header-anchor" href="#_3-filter" aria-label="Permalink to &quot;3.filter&quot;">​</a></h3><ul><li><p>参数: 一个函数参数。这个函数接受一个默认参数，就是当前元素。这个作为参数的函数返回值为一个布尔类型，决定元素是否保留。</p></li><li><p>filter方法返回值为一个新的数组，这个数组里面包含参数里面所有被保留的项。</p></li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>let nums = [1, 2, 3];</span></span>
+<span class="line"><span>// 保留奇数项</span></span>
+<span class="line"><span>let oddNums = nums.filter(item =&gt; item % 2);</span></span>
+<span class="line"><span>console.log(oddNums);</span></span></code></pre></div><h3 id="_4-sort" tabindex="-1">4.sort <a class="header-anchor" href="#_4-sort" aria-label="Permalink to &quot;4.sort&quot;">​</a></h3><p>参数: 一个用于比较的函数，它有两个默认参数，分别是代表比较的两个元素。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>let nums = [2, 3, 1];</span></span>
+<span class="line"><span>//两个比较的元素分别为a, b</span></span>
+<span class="line"><span>nums.sort(function(a, b) {</span></span>
+<span class="line"><span>  if(a &gt; b) return 1;</span></span>
+<span class="line"><span>  else if(a &lt; b) return -1;</span></span>
+<span class="line"><span>  else if(a == b) return 0;</span></span>
+<span class="line"><span>})</span></span></code></pre></div><p>当比较函数返回值大于0，则 a 在 b 的后面，即a的下标应该比b大。反之，则 a 在 b 的后面，即 a 的下标比 b 小。整个过程就完成了一次升序的排列。</p><p>比较函数不传的时候,函数将数字转换为字符串，然后根据字母unicode值进行升序排序，也就是根据字符串的比较规则进行升序排序。</p>`,18)]))}const m=s(l,[["render",i]]);export{h as __pageData,m as default};

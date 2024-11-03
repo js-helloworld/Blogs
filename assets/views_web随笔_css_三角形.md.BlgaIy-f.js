@@ -1,0 +1,8 @@
+import{_ as a,c as n,a2 as e,o as t}from"./chunks/framework.CjNeJe2C.js";const h=JSON.parse('{"title":"三角形","description":"","frontmatter":{"title":"三角形","date":"2020-06-10T00:00:00.000Z","tags":["css"],"categories":["css"]},"headers":[],"relativePath":"views/web随笔/css/三角形.md","filePath":"views/web随笔/css/三角形.md"}'),p={name:"views/web随笔/css/三角形.md"};function i(l,s,c,o,r,d){return t(),n("div",null,s[0]||(s[0]=[e(`<div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>&lt;div id=&quot;d1&quot;&gt;&lt;/div&gt;</span></span></code></pre></div><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>#d1{</span></span>
+<span class="line"><span>    width:0;</span></span>
+<span class="line"><span>    height:0;</span></span>
+<span class="line"><span>    border-width:50px;</span></span>
+<span class="line"><span>    border-style:solid;</span></span>
+<span class="line"><span>    border-color:red  blue  black  yellow;</span></span>
+<span class="line"><span>    // border-color:red transparent transparent transparent;</span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>效果如下： <img src="https://raw.githubusercontent.com/mail-img/picBed/master/blog/img/picgo/20200615145620.png" alt="20200615145620.png"></p>`,3)]))}const b=a(p,[["render",i]]);export{h as __pageData,b as default};
