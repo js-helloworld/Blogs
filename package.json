@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "preview": "vitepress preview"
+    "push": "git push && bash deploy.sh"
   },
   "dependencies": {
     "from": "^0.1.7",
