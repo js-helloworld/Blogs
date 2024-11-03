@@ -17,6 +17,6 @@ features:
     link: /views/leetcode/1.两数之和.md
   - title: web随笔
     details: blogs
-    link: /views/web随笔/git提交指南.md
+    link: /views/web随笔/排序/bubble.html
 
 ---

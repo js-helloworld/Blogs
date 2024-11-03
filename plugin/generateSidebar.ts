@@ -19,32 +19,73 @@ export function generateSidebar(
 ): DefaultTheme.SidebarItem[] {
   const sidebar: DefaultTheme.SidebarItem[] = []
 
-  if (!fs.existsSync(dir)) {
-    console.error(`Directory not found: ${dir}`)
-    return sidebar
-  }
+  const files = fs.readdirSync(dir, { withFileTypes: true })
 
-  const files = fs
-    .readdirSync(dir)
-    .filter((file) => file.endsWith('.md'))
-    .sort((a, b) => {
-      const filePathA = path.join(dir, a)
-      const filePathB = path.join(dir, b)
-      const attrA = getMarkdownAttr(filePathA, attr)
-      const attrB = getMarkdownAttr(filePathB, attr)
-      return attrA.localeCompare(attrB)
-    })
+  files.forEach((file) => {
+    if (file.isDirectory()) {
+      const folderPath = path.join(dir, file.name)
+      const files = fs
+        .readdirSync(folderPath)
+        .filter((file) => file.endsWith('.md'))
 
-  files.forEach((fileName) => {
-    const filePath = path.join(dir, fileName)
-    const path2 = dir.split('\\').slice(-1)[0]
-    const title = getMarkdownAttr(filePath)
+      const path2 = folderPath.split('\\').slice(-2).join('/')
 
-    sidebar.push({
-      text: title,
-      link: `/${basePaht}/${path2}/${fileName}`
-    })
+      const items = files.map((file2) => {
+        const filePath = path.join(folderPath, file2)
+        const title = getMarkdownAttr(filePath)
+        return {
+          text: title,
+          link: `/${basePaht}/${path2}/${file2}`
+        }
+      })
+
+      sidebar.push({
+        text: file.name,
+        collapsed: true,
+        items: items
+      })
+    } else {
+      const filePath = path.join(dir, file.name)
+      const path2 = dir.split('\\').slice(-1)[0]
+      const title = getMarkdownAttr(filePath)
+      sidebar.push({
+        text: title,
+        link: `/${basePaht}/${path2}/${file.name}`
+      })
+    }
   })
+  const compareAttr = (a, b) => {
+    const filePathA = path.join(dir, `../../${a.link!}`)
+    const filePathB = path.join(dir, `../../${b.link!}`)
+    const attrA = getMarkdownAttr(filePathA, attr)
+    const attrB = getMarkdownAttr(filePathB, attr)
+    return attrA.localeCompare(attrB)
+  }
+  sidebar
+    .sort((a, b) => {
+      if (!a.items && !b.items) {
+        return compareAttr(a, b)
+      } else {
+        if (a.items)
+          a.items.sort((p, q) => {
+            return compareAttr(p, q)
+          })
+        if (b.items)
+          b.items.sort((p, q) => {
+            return compareAttr(p, q)
+          })
+        return a.text!.localeCompare(b.text!)
+      }
+    })
+    .sort((a, b) => {
+      if (a.items && b.items) {
+        return 0
+      } else if (a.items) {
+        return -1
+      } else {
+        return 1
+      }
+    })
 
   return sidebar
 }

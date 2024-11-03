@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { generateSidebar } from '../plugin/generateSidebar'
+import { getLink } from '../plugin/tool'
 import path from 'path'
 import fs from 'fs'
 
@@ -8,6 +9,7 @@ const folders = fs
     withFileTypes: true
   })
   .map((dirent) => dirent.name)
+
 const sidebar = {}
 const nav: { text: string; link: string }[] = []
 folders.forEach((folder) => {
@@ -18,7 +20,7 @@ folders.forEach((folder) => {
 
   nav.push({
     text: folder,
-    link: sidebar[`/views/${folder}`][0].link
+    link: getLink(sidebar[`/views/${folder}`])
   })
 })
 
