@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@types/node": "^22.8.6",
+    "flexsearch": "^0.7.43",
+    "vitepress": "^1.4.3"
+  },
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "from": "^0.1.7",
+    "fs": "^0.0.1-security",
+    "import": "^0.0.6",
+    "path": "^0.12.7"
+  }
+}
