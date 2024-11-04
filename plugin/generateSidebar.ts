@@ -23,27 +23,29 @@ export function generateSidebar(
 
   files.forEach((file) => {
     if (file.isDirectory()) {
-      const folderPath = path.join(dir, file.name)
-      const files = fs
-        .readdirSync(folderPath)
-        .filter((file) => file.endsWith('.md'))
+      if (file.name !== 'images') {
+        const folderPath = path.join(dir, file.name)
+        const files = fs
+          .readdirSync(folderPath)
+          .filter((file) => file.endsWith('.md'))
 
-      const path2 = folderPath.split('\\').slice(-2).join('/')
+        const path2 = folderPath.split('\\').slice(-2).join('/')
 
-      const items = files.map((file2) => {
-        const filePath = path.join(folderPath, file2)
-        const title = getMarkdownAttr(filePath)
-        return {
-          text: title,
-          link: `/${basePaht}/${path2}/${file2}`
-        }
-      })
+        const items = files.map((file2) => {
+          const filePath = path.join(folderPath, file2)
+          const title = getMarkdownAttr(filePath)
+          return {
+            text: title,
+            link: `/${basePaht}/${path2}/${file2}`
+          }
+        })
 
-      sidebar.push({
-        text: file.name,
-        collapsed: true,
-        items: items
-      })
+        sidebar.push({
+          text: file.name,
+          collapsed: true,
+          items: items
+        })
+      }
     } else {
       const filePath = path.join(dir, file.name)
       const path2 = dir.split('\\').slice(-1)[0]

@@ -13,10 +13,10 @@ hero:
 
 
 features:
-  - title: LeetCode
-    details: 每日一题
-    link: /views/leetcode/1.两数之和.md
   - title: web随笔
     details: blogs
     link: /views/web随笔/other/gitlabAutoDeploy.html
+  - title: LeetCode
+    details: 每日一题
+    link: /views/leetcode/695.岛屿的最大面积.md
 ---
