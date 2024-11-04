@@ -9,7 +9,8 @@ hero:
   actions:
     - theme: brand
       text: VitePress
-      link: /https://vitepress.qzxdp.cn/
+      link: https://vitepress.qzxdp.cn/
+
 
 features:
   - title: LeetCode
@@ -17,6 +18,8 @@ features:
     link: /views/leetcode/1.两数之和.md
   - title: web随笔
     details: blogs
-    link: /views/web随笔/排序/bubble.html
-
+    link: /views/web随笔/other/gitlabAutoDeploy.html
 ---
+
+
+<pre>{{ 1+2 }}</pre>
