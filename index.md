@@ -20,6 +20,3 @@ features:
     details: blogs
     link: /views/web随笔/other/gitlabAutoDeploy.html
 ---
-
-
-<pre>{{ 1+2 }}</pre>
