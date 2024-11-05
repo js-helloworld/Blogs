@@ -13,9 +13,13 @@ const folders = fs
 const sidebar = {}
 const nav: { text: string; link: string }[] = []
 folders.forEach((folder) => {
+  let attr = 'date'
+  if (folder === 'leetcode') {
+    attr = 'order'
+  }
   sidebar[`/views/${folder}`] = generateSidebar(
     path.join(__dirname, '../views', folder),
-    'date'
+    attr
   )
 
   nav.push({
