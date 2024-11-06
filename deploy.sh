@@ -1,5 +1,5 @@
 git add .
-git commit -m 'blogs commit'
+git commit -m '-'
 git push
 
 # 确保脚本抛出遇到的错误
