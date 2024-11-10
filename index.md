@@ -10,6 +10,42 @@ hero:
     - theme: brand
       text: VitePress
       link: https://vitepress.qzxdp.cn/
+    - theme: alt
+      text: GitHub
+      link: https://github.com
+    - theme: alt
+      text: SegmentFault 思否
+      link: https://segmentfault.com/
+    - theme: alt
+      text: stackoverflow
+      link: https://stackoverflow.org.cn/
+    - theme: alt
+      text: 掘金
+      link: https://juejin.cn/
+    - theme: alt
+      text: 开发者头条
+      link: https://toutiao.io/
+    - theme: alt
+      text: V2EX
+      link: https://www.v2ex.com/
+    - theme: alt
+      text: CSDN
+      link: https://blog.csdn.net
+    - theme: alt
+      text: 简书
+      link: https://www.jianshu.com/
+    - theme: alt
+      text: 博客园
+      link: https://www.cnblogs.com
+    - theme: alt
+      text: leetcode
+      link: https://leetcode.cn/
+    - theme: alt
+      text: W3CSchool
+      link: https://www.w3school.com.cn/
+    - theme: alt
+      text: 藏经阁
+      link: https://developer.aliyun.com/ebook/
 
 
 features:
